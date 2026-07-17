@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!--<div class="disclamer">DISCLAMER: THE WEBSITE IS NOT GOING TO BE UPDATED IN A WHILE DUE TO SCHOOL.</div>-->
+<nav class="top-bar">
+    <div class="logo">IGDPS</div>
+        
+    <div class="nav-links">
+         <a href="index.html">Home</a>
+        <a href="IGDPS1.html">List</a>
+        <a href="IGDPSupcoming.html">Upcoming List</a>
+        <a href="IGDPSplayers.html">Players</a>
+        <a href="IGDPSguidelines.html">Guidelines</a>
+        <a href="IGDPSstaff.html">Staff</a>
+        <a href="https://discord.gg/SSzCs2cJYn" target="_blank" rel="noopener noreferrer">Discord</a>
+    </div>
+</nav>
+<head>
+    <style>
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #9492ff;
+            padding: 0 50px;
+            height: 70px;
+            border-bottom: 7px solid #7482ff;
+            font-family: arial, sans-serif;
+            flex-shrink: 0;
+        }
+
+        .main-display {
+            background-color: #000a91;
+            width: 850px;
+            height: 825px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            overflow-y: auto;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: arial, sans-serif;
+        }
+
+        .main-display .title {
+            color: #6a68c8;
+            font-weight: bold;
+            font-size: 35px;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 10px 0 10px 10px;
+            position: relative;
+        }
+
+        .main-display .title::after {
+            content: "";
+            position: absolute;
+            left: 30px;
+            right: 10px;
+            bottom: 0;
+            height: 3px;
+            background-color: #514fb8;
+        }
+
+        .main-display .subtitle {
+            color: #a6a1e5;
+            font-size: 18px;
+            margin: 10px 0 0 20px;
+            padding: 0 10px 0 10px;
+            text-transform: none;
+        }
+
+        .main-display .video-container {
+            width: calc(100% - 40px);
+            max-width: 820px;
+            margin: 60px 20px 0;
+            background-color: #080072;
+            border: 1px solid #4039a8;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .main-display .video-container iframe {
+            width: 100%;
+            height: 430px;
+            border: 0;
+            display: block;
+        }
+
+        .main-display .info-row {
+            display: flex;
+            gap: 20px;
+            width: calc(100% - 40px);
+            max-width: 820px;
+            margin: 30px 20px 20px;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+
+        .main-display .info-card {
+            flex: 1;
+            min-width: 0;
+            background-color: #000274;
+            border: 1px solid #4039a8;
+            border-radius: 12px;
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .main-display .info-card .label {
+            color: #c2bef9;
+            font-size: 12px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .main-display .info-card .value {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .main-display2 {
+            background-color: #000291;
+            width: 325px;
+            height: 775px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: absolute;
+            right: 5%;
+            top: 11%;
+            padding: 20px;
+        }
+
+        .main-display2 .title {
+            color: #7668c8;
+            font-weight: bold;
+            font-size: 35px;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .main-display2 .scroll-area {
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .main-display2 .scroll-area .record-row {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 14px 12px;
+            width: 100%;
+            color: #d4d1ff;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .logo {
+            color: #5956ff;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: #929dff;
+            background-color: #7d74ff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .mode-switcher {
+            position: relative;
+            display: flex;
+            width: 250px;
+            margin: 20px 0;
+            background: transparent;
+        }
+
+        .mode-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #5956ff;
+            padding: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .mode-btn.active {
+            color: #373092;
+        }
+
+        #twoplayer-btn {
+            margin-left: 40px;
+        }
+
+        .underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 50%;
+            background-color: #171974;
+        }
+
+        #platformer-btn.active ~ .underline {
+            transform: translateX(100%);
+        }
+
+        .list-scroll-box {
+            width: 320px;
+            height: 100vh;
+            overflow-y: scroll;
+            background-color: rgb(177, 168, 255);
+            border: 2px solid #8274ff;
+            padding: 10px;
+            margin-top: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .level-card {
+            align-items: center;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.1s;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background-color: #6e64ff;
+            padding: 15px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            color: white;
+            display: flex;
+            gap: 15px;
+        }
+
+        .level-card:active {
+            transform: scale(0.98);
+             background-color: #4428c0;
+        }
+
+        .rank {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 15px;
+            min-width: 35px;
+        }
+
+        .level-name {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #0c00b3;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<div class="mode-switcher">
+   <a href="IGDPS1.html" class="mode-btn active" id="classic-btn">Classic</a>
+
+    <a href="IGDPSplatformer.html" class="mode-btn" id="platformer-btn">Platformer</a>
+
+   <div class="underline"></div>
+</div>
+
+<div class="list-scroll-box">
+    <a href="IGDPS1.html" class="level-card active">
+        <span class="rank">#1</span>
+        <span class="level-name">Void Space</span>
+    </a>
+    <a href="IGDPS2.html" class="level-card active">
+        <span class="rank">#2</span>
+        <span class="level-name">Frosty Circles III</span>
+    </a>
+    <a href="IGDPS3.html" class="level-card active">
+        <span class="rank">#3</span>
+        <span class="level-name">Flapper Is Trans</span>
+    </a>
+    <a href="IGDPS4.html" class="level-card active">
+        <span class="rank">#4</span>
+        <span class="level-name">Check Description</span>
+    </a>
+    <a href="IGDPS5.html" class="level-card active">
+        <span class="rank">#5</span>
+        <span class="level-name">Owie</span>
+    </a>
+            </div>
+
+
+</div>
+
+    <div class="main-display">
+        <p class="title">Owie</p>
+        <p class="subtitle">Owie is a trippy level with a cool visual style.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/NEGa3DypiWk?si=aRMcqWl3dVimLgh_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="info-row">
+            <div class="info-card">
+                <div class="label">LEVEL ID</div>
+                <div class="value">182</div>
+            </div>
+            <div class="info-card">
+                <div class="label">TIER</div>
+                <div class="value">10</div>
+            </div>
+            <div class="info-card">
+                <div class="label">CREATOR</div>
+                <div class="value2">ThaSuperN0va</div>
+            </div>
+            <div class="info-card">
+                <div class="label">VERIFIER</div>
+                <div class="value2">ThaSuperN0va</div>
+            </div>
+                                     <div class="info-card">
+                                      <div class="label">POINTS GIVEN</div>
+                                         <div class="value">400</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-display2">
+        <p class="title">Level Records</p>
+        <div class="scroll-area"></div>
+    </div>
+
+<script>
+    const classicBtn =
+    document.getElementById('classic-btn');
+    const platformerBtn =
+    document.getElementById('platformer-btn');
+    const underline =
+    document.querySelector('.underline');
+    classicBtn.addEventListener('click', () => {
+        classicBtn.classList.add('active');
+        platformerBtn.classList.remove('active');
+        underline.style.transform =
+'translateX(0%)';
+    });
+    platformerBtn.addEventListener('click', () => 
+    {
+        platformerBtn.classList.add('active');
+        classicBtn.classList.remove('active');
+        underline.style.transform =
+        'translateX(33%)';
+    });
+</script>
